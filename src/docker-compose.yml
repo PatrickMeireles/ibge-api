@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  api:
+    image: docker.io/patrick-amorim/ibge-api:latest
+    hostname: api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Database: Data Source=../database.db
+      JwtOptions__Key: ADD_YOUR_KEY_HERE
+      JwtOptions__TimeToExpiresInMinutes: 30
+    build: .
+    ports:
+      - "8090:80"
